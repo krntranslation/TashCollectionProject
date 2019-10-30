@@ -88,7 +88,7 @@ namespace TrashCollection.Controllers
         public ActionResult Delete(int id)
         {
             var deleteEmployee = context.Employees.Where(d => d.Id == id).FirstOrDefault();
-            return View();
+            return View(deleteEmployee);
         }
 
         // POST: Customer/Delete/5

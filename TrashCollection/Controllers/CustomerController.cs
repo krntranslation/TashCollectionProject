@@ -96,7 +96,7 @@ namespace TrashCollection.Controllers
         public ActionResult Delete(int id)
         {
             var deleteCustomer = context.Customers.Where(d => d.Id == id).FirstOrDefault();
-            return View();
+            return View(deleteCustomer);
         }
 
         // POST: Customer/Delete/5

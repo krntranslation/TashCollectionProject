@@ -31,24 +31,24 @@ namespace TrashCollection.Models
         public int Zipcode { get; set; }
 
         [Display(Name = "Balance")]
-        public double Balance { get; set; }
+        public double? Balance { get; set; }
 
-        public bool PickupConfirmed { get; set; }
+        public bool? PickupConfirmed { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Extra Pickup Date")]
-        public DateTime PickUpDate { get; set; }
+        public DateTime? PickUpDate { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Suspension Start Date")]
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Suspension End Date")]
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         [ForeignKey("ApplicationUser")]
         public string ApplicationId { get; set; }
