@@ -179,6 +179,10 @@
     <Compile Include="Migrations\201910292017506_InitalMigration.Designer.cs">
       <DependentUpon>201910292017506_InitalMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910302043049_InitalMigration1.cs" />
+    <Compile Include="Migrations\201910302043049_InitalMigration1.Designer.cs">
+      <DependentUpon>201910302043049_InitalMigration1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -189,6 +193,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-A.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -276,6 +281,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910292017506_InitalMigration.resx">
       <DependentUpon>201910292017506_InitalMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910302043049_InitalMigration1.resx">
+      <DependentUpon>201910302043049_InitalMigration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

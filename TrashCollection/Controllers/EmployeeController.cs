@@ -8,7 +8,7 @@ using TrashCollection.Models;
 
 namespace TrashCollection.Controllers
 {
-    [Authorize]
+    [Authorize(Roles= "Employee")]
     public class EmployeeController : Controller
     {
         ApplicationDbContext context;
