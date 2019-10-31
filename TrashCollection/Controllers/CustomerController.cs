@@ -81,6 +81,7 @@ namespace TrashCollection.Controllers
                 editCustomer.PickUpDate = customer.PickUpDate;
                 editCustomer.StartDate = customer.StartDate;
                 editCustomer.EndDate = customer.EndDate;
+                editCustomer.PickUpDayOfTheWeek = customer.PickUpDayOfTheWeek;
 
                 context.SaveChanges();
 
@@ -151,6 +152,27 @@ namespace TrashCollection.Controllers
                 var changePickUpDate = context.Customers.Where(x => x.Id == id).FirstOrDefault();
                 changePickUpDate.StartDate = customer.StartDate;
                 changePickUpDate.EndDate = customer.EndDate;
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        //Changing pick up date
+        public ActionResult ChangePickUpForDayOfTheWeek(int id)
+        {
+            var changePickUpDay = context.Customers.Where(x => x.Id == id).FirstOrDefault();
+            return View(changePickUpDay);
+        }
+        [HttpPost]
+        public ActionResult ChangePickUpForDayOfTheWeek(int id, Customer customer)
+        {
+            try
+            {
+                var changePickUpDay = context.Customers.Where(x => x.Id == id).FirstOrDefault();
+                changePickUpDay.PickUpDayOfTheWeek = customer.PickUpDayOfTheWeek;
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }

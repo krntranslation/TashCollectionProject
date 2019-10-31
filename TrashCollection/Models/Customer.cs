@@ -35,6 +35,9 @@ namespace TrashCollection.Models
 
         public bool? PickupConfirmed { get; set; }
 
+        [Display(Name = "Pick up day")]
+        public DayOfWeek PickUpDayOfTheWeek { get; set; }
+
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Extra Pickup Date")]
@@ -49,6 +52,9 @@ namespace TrashCollection.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Suspension End Date")]
         public DateTime? EndDate { get; set; }
+
+
+
 
         [ForeignKey("ApplicationUser")]
         public string ApplicationId { get; set; }
