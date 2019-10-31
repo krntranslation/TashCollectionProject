@@ -4,9 +4,9 @@
     ViewBag.Title = "AddPickUp";
 }
 
-<h2>AddPickUp</h2>
+<h2>Add Pick Up</h2>
 
-<h3>This will add a emergency pick up!</h3>
+<h3>This will add a Extra Pick up!</h3>
 
 @using (Html.BeginForm())
 {
@@ -33,7 +33,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Details", "Details", new { id = Model.Id }))
 </div>
 
 @section Scripts {

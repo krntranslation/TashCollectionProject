@@ -117,5 +117,9 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id })|
+    @Html.ActionLink("Extra Pick Up", "AddPickUp", new { id = Model.Id })|
+    @Html.ActionLink("Change/Suspend Sevice", "ChangePickUpDates", new { id = Model.Id })|
+    @Html.ActionLink("View Balance", "ViewBalance", new { id = Model.Id })|
     @Html.ActionLink("Back to List", "Index")
 </p>

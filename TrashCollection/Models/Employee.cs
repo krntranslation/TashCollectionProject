@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace TrashCollection.Models
 {
-    [Authorize]
+    [Authorize(Roles ="Employee")]
     public class Employee
     {
       

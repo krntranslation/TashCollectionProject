@@ -8,7 +8,7 @@ using TrashCollection.Models;
 
 namespace TrashCollection.Controllers
 {
-    //[Authorize(Roles= "Employee")]
+    [Authorize(Roles= "Employee")]
     public class EmployeeController : Controller
     {
         ApplicationDbContext context;
@@ -123,6 +123,11 @@ namespace TrashCollection.Controllers
             {
                 return View();
             }
+        }
+        public ActionResult CustomerIndex()
+        {
+            var customerList = context.Customers.ToList();
+            return View(customerList);
         }
 
         ////accesing customer pick on a certain day

@@ -4,7 +4,7 @@
     ViewBag.Title = "ChangePickUpDates";
 }
 
-<h2>ChangePickUpDates</h2>
+<h2>Change Pick Up Dates</h2>
 
 
 @using (Html.BeginForm())
@@ -39,7 +39,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Details", "Details", new { id = Model.Id }))
 </div>
 
 @section Scripts {
