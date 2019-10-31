@@ -183,6 +183,10 @@
     <Compile Include="Migrations\201910302043049_InitalMigration1.Designer.cs">
       <DependentUpon>201910302043049_InitalMigration1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910310206106_InitalMigration2.cs" />
+    <Compile Include="Migrations\201910310206106_InitalMigration2.Designer.cs">
+      <DependentUpon>201910310206106_InitalMigration2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -261,6 +265,8 @@
     <Content Include="Views\Employee\Details.cshtml" />
     <Content Include="Views\Shared\_LayoutEmployee.cshtml" />
     <Content Include="Views\Shared\_LayoutCustomer.cshtml" />
+    <Content Include="Views\Customer\AddPickUp.cshtml" />
+    <Content Include="Views\Customer\ChangePickUpDates.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -284,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910302043049_InitalMigration1.resx">
       <DependentUpon>201910302043049_InitalMigration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910310206106_InitalMigration2.resx">
+      <DependentUpon>201910310206106_InitalMigration2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

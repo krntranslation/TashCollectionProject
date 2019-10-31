@@ -116,5 +116,48 @@ namespace TrashCollection.Controllers
                 return View();
             }
         }
+        //Trying to add Emegency Pick Up
+        public ActionResult AddPickUp(int id)
+        {
+            var addEmergencyPickUp = context.Customers.Where(x => x.Id == id).FirstOrDefault();
+            return View(addEmergencyPickUp);
+        }
+        [HttpPost]
+        public ActionResult AddPickUp(int id, Customer customer)
+        {
+            try
+            {
+                var addEmergencyPickUpDate = context.Customers.Where(x => x.Id == id).FirstOrDefault();
+                addEmergencyPickUpDate.PickUpDate = customer.PickUpDate;
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        //Trying to add Change pick up dates
+        public ActionResult ChangePickUpDates(int id)
+        {
+            var changePickUp = context.Customers.Where(x => x.Id == id).FirstOrDefault();
+            return View(changePickUp);
+        }
+        [HttpPost]
+        public ActionResult ChangePickUpDates(int id, Customer customer)
+        {
+            try
+            {
+                var changePickUpDate = context.Customers.Where(x => x.Id == id).FirstOrDefault();
+                changePickUpDate.StartDate = customer.StartDate;
+                changePickUpDate.EndDate = customer.EndDate;
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }
