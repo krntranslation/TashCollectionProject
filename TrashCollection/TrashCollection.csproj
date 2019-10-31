@@ -272,6 +272,8 @@
     <Content Include="Views\Customer\AddPickUp.cshtml" />
     <Content Include="Views\Customer\ChangePickUpDates.cshtml" />
     <Content Include="Views\Customer\ChangePickUpForDayOfTheWeek.cshtml" />
+    <Content Include="Views\Customer\ViewBalance.cshtml" />
+    <Content Include="Views\Employee\ChangingBalance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -20,7 +20,8 @@ namespace TrashCollection.Controllers
 
         public ActionResult Index()
         {
-            return View(context.Customers.ToList());
+            var customerList = context.Customers.ToList();
+            return View(customerList);
         }
 
         // GET: Customer/Details/5
@@ -180,6 +181,11 @@ namespace TrashCollection.Controllers
             {
                 return View();
             }
+        }
+        public ActionResult ViewBalance(int id)
+        {
+            var viewBalance = context.Customers.Where(x => x.Id == id).FirstOrDefault();
+            return View(viewBalance);
         }
     }
 }

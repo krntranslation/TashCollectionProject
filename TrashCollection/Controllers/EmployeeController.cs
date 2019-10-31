@@ -8,7 +8,7 @@ using TrashCollection.Models;
 
 namespace TrashCollection.Controllers
 {
-    [Authorize(Roles= "Employee")]
+    //[Authorize(Roles= "Employee")]
     public class EmployeeController : Controller
     {
         ApplicationDbContext context;
@@ -23,21 +23,18 @@ namespace TrashCollection.Controllers
         {
             return View(context.Employees.ToList());
         }
-
         // GET: Customer/Details/5
         public ActionResult Details(int id)
         {
             var detailEmployee = context.Employees.Where(x => x.Id == id).FirstOrDefault();
             return View(detailEmployee);
         }
-
         // GET: Customer/Create
         public ActionResult Create()
         {
             Employee employee = new Employee();
             return View(employee);
         }
-
         // POST: Customer/Create
         [HttpPost]
         public ActionResult Create(Employee employee)
@@ -56,14 +53,12 @@ namespace TrashCollection.Controllers
                 return View();
             }
         }
-
         // GET: Customer/Edit/5
         public ActionResult Edit(int id)
         {
             var editEmployee = context.Employees.Where(x => x.Id == id).FirstOrDefault();
             return View(editEmployee);
         }
-
         // POST: Customer/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, Employee employee)
@@ -72,7 +67,7 @@ namespace TrashCollection.Controllers
             {
                 var editEmployee = context.Employees.Where(x => x.Id == id).FirstOrDefault();
                 editEmployee.Id = employee.Id;
-                editEmployee.ZipCode = employee.ZipCode;
+                editEmployee.Balance = employee.Balance;
 
                 context.SaveChanges();
 
@@ -83,14 +78,12 @@ namespace TrashCollection.Controllers
                 return View();
             }
         }
-
         // GET: Customer/Delete/5
         public ActionResult Delete(int id)
         {
             var deleteEmployee = context.Employees.Where(d => d.Id == id).FirstOrDefault();
             return View(deleteEmployee);
         }
-
         // POST: Customer/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, Employee employee)
@@ -108,5 +101,35 @@ namespace TrashCollection.Controllers
                 return View();
             }
         }
+        //changing customers balance
+        public ActionResult ChangingBalance(int customer)
+        {
+            var changeCost = context.Customers.Where(x => x.Balance == customer);
+            return View(changeCost);
+        }
+        [HttpPost]
+        public ActionResult ChangingBalance(int id, Customer customer)
+        {
+            try
+            {
+                var changeCost = context.Customers.Where(x => x.Id == id).FirstOrDefault();
+                changeCost.Balance = customer.Balance;
+
+                context.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        ////accesing customer pick on a certain day
+        //public ActionResult CheckingDaysPickUp(int id, Customer)
+        //{
+        //    var checkDay = context.Customers.Where()
+        //  return View(checkDay);
+        //}
     }
 }
