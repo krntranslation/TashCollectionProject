@@ -21,7 +21,8 @@ namespace TrashCollection.Controllers
         // GET: Employee
         public ActionResult Index()
         {
-            return View(context.Employees.ToList());
+            var getEmployees = context.Employees.ToList();
+            return View(getEmployees);
         }
         // GET: Customer/Details/5
         public ActionResult Details(int id)
@@ -66,8 +67,7 @@ namespace TrashCollection.Controllers
             try
             {
                 var editEmployee = context.Employees.Where(x => x.Id == id).FirstOrDefault();
-                editEmployee.Id = employee.Id;
-                editEmployee.Balance = employee.Balance;
+                editEmployee.ZipCode = employee.ZipCode;
 
                 context.SaveChanges();
 
@@ -101,58 +101,45 @@ namespace TrashCollection.Controllers
                 return View();
             }
         }
-        //changing customers balancw
-        public ActionResult ChangingBalance(int customer)
-        {
-            var changeCost = context.Customers.OrderBy(x => x.Balance == customer);
-            return View(changeCost);
-        }
-        [HttpPost]
-        public ActionResult ChangingBalance(int id, Customer customer)
-        {
-            try
-            {
-                var changeCost = context.Customers.Where(x => x.Id == id).FirstOrDefault();
-                changeCost.Balance = customer.Balance;
-
-                context.SaveChanges();
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //Dont change anything above this
+        //Trying to employee user stories
+       
         public ActionResult CustomerIndex()
         {
             var customerList = context.Customers.ToList();
             return View(customerList);
         }
-
-        public ActionResult ConfirmPickUp(int id)
+        public ActionResult TodaysWorkLoad()
         {
-            var editCustomer = context.Customers.Where(x => x.Id == id).FirstOrDefault();
-            return View(editCustomer);
+            var employeeId = User.Identity.GetUserId();
+            var employee = context.Employees.Where(x => x.ApplicationId == employeeId).FirstOrDefault();
+            var searchResults = context.Customers.Where(c => c.Zipcode == employee.ZipCode);
+            return View(searchResults);
         }
-        [HttpPost]
-        public ActionResult ConfirmPickUp(int id, Customer customer)
-        {
-            try
-            {
-                var editCustomer = context.Customers.Where(x => x.Id == id).FirstOrDefault();
-                editCustomer.PickupConfirmed = customer.PickupConfirmed;
-                editCustomer.Balance = customer.Balance;
-                context.SaveChanges();
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+        //public ActionResult ConfirmPickUp(int id)
+        //{
+        //    var editCustomer = context.Customers.Where(x => x.Id == id).FirstOrDefault();
+        //    return View(editCustomer);
+        //}
+        //[HttpPost]
+        //public ActionResult ConfirmPickUp(int id, Customer customer)
+        //{
+        //    try
+        //    {
+        //        var editCustomer = context.Customers.Where(x => x.Id == id).FirstOrDefault();
+        //        editCustomer.PickupConfirmed = customer.PickupConfirmed;
+        //        editCustomer.Balance = customer.Balance;
+        //        context.SaveChanges();
 
-            }
-        }
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+
+        //    }
+    
     }
 
 }

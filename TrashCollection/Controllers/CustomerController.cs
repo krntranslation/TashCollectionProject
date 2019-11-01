@@ -78,12 +78,14 @@ namespace TrashCollection.Controllers
                 editCustomer.City = customer.City;
                 editCustomer.StateCode = customer.StateCode;
                 editCustomer.Zipcode = customer.Zipcode;
-                editCustomer.Balance = customer.Balance;
                 editCustomer.PickUpDate = customer.PickUpDate;
                 editCustomer.StartDate = customer.StartDate;
                 editCustomer.EndDate = customer.EndDate;
                 editCustomer.PickUpDayOfTheWeek = customer.PickUpDayOfTheWeek;
-
+             
+                editCustomer.PickupConfirmed = customer.PickupConfirmed;
+                editCustomer.Balance = customer.Balance;
+            
                 context.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -187,19 +189,15 @@ namespace TrashCollection.Controllers
             var viewBalance = context.Customers.Where(x => x.Id == id).FirstOrDefault();
             return View(viewBalance);
         }
-        //changing customers balance
-        public ActionResult ChangingBalance(int customer)
-        {
-            var changeCost = context.Customers.Where(x => x.Balance == customer);
-            return View(changeCost);
-        }
+
         [HttpPost]
-        public ActionResult ChangingBalance(int id, Customer customer)
+        public ActionResult ViewBalance(int id, Customer customer)
         {
             try
             {
                 var changeCost = context.Customers.Where(x => x.Id == id).FirstOrDefault();
                 changeCost.Balance = customer.Balance;
+                changeCost.PickupConfirmed = customer.PickupConfirmed;
 
                 context.SaveChanges();
 
@@ -213,12 +211,6 @@ namespace TrashCollection.Controllers
 
         //below here the three Action results are trying to have only employee have access to charging and changing values
         [Authorize(Roles ="Employee")]
-        public ActionResult CustomerIndex()
-        {
-            var customerList = context.Customers.ToList();
-            return View(customerList);
-        }
-        [Authorize(Roles = "Employee")]
         public ActionResult ConfirmPickUp(int id)
         {
             var editCustomer = context.Customers.Where(x => x.Id == id).FirstOrDefault();

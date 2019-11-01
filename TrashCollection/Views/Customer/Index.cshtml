@@ -99,7 +99,9 @@
         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.Id })|
         @Html.ActionLink("Extra Pick Up", "AddPickUp", new { id = item.Id })|
-        @Html.ActionLink("Change/Suspend Sevice", "ChangePickUpDates", new { id = item.Id })
+        @Html.ActionLink("Change/Suspend Sevice", "ChangePickUpDates", new { id = item.Id })|
+        @Html.ActionLink("Adding Charges", "ConfirmPickUp", new { id = item.Id })
+
     </td>
 </tr>
 }
