@@ -8,7 +8,7 @@ using TrashCollection.Models;
 
 namespace TrashCollection.Controllers
 {
-    [Authorize(Roles= "Employee")]
+    [Authorize(Roles = "Employee")]
     public class EmployeeController : Controller
     {
         ApplicationDbContext context;
@@ -101,10 +101,10 @@ namespace TrashCollection.Controllers
                 return View();
             }
         }
-        //changing customers balance
+        //changing customers balancw
         public ActionResult ChangingBalance(int customer)
         {
-            var changeCost = context.Customers.Where(x => x.Balance == customer);
+            var changeCost = context.Customers.OrderBy(x => x.Balance == customer);
             return View(changeCost);
         }
         [HttpPost]
@@ -130,11 +130,29 @@ namespace TrashCollection.Controllers
             return View(customerList);
         }
 
-        ////accesing customer pick on a certain day
-        //public ActionResult CheckingDaysPickUp(int id, Customer)
-        //{
-        //    var checkDay = context.Customers.Where()
-        //  return View(checkDay);
-        //}
+        public ActionResult ConfirmPickUp(int id)
+        {
+            var editCustomer = context.Customers.Where(x => x.Id == id).FirstOrDefault();
+            return View(editCustomer);
+        }
+        [HttpPost]
+        public ActionResult ConfirmPickUp(int id, Customer customer)
+        {
+            try
+            {
+                var editCustomer = context.Customers.Where(x => x.Id == id).FirstOrDefault();
+                editCustomer.PickupConfirmed = customer.PickupConfirmed;
+                editCustomer.Balance = customer.Balance;
+                context.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+
+            }
+        }
     }
+
 }

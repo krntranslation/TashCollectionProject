@@ -187,5 +187,61 @@ namespace TrashCollection.Controllers
             var viewBalance = context.Customers.Where(x => x.Id == id).FirstOrDefault();
             return View(viewBalance);
         }
+        //changing customers balance
+        public ActionResult ChangingBalance(int customer)
+        {
+            var changeCost = context.Customers.Where(x => x.Balance == customer);
+            return View(changeCost);
+        }
+        [HttpPost]
+        public ActionResult ChangingBalance(int id, Customer customer)
+        {
+            try
+            {
+                var changeCost = context.Customers.Where(x => x.Id == id).FirstOrDefault();
+                changeCost.Balance = customer.Balance;
+
+                context.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        //below here the three Action results are trying to have only employee have access to charging and changing values
+        [Authorize(Roles ="Employee")]
+        public ActionResult CustomerIndex()
+        {
+            var customerList = context.Customers.ToList();
+            return View(customerList);
+        }
+        [Authorize(Roles = "Employee")]
+        public ActionResult ConfirmPickUp(int id)
+        {
+            var editCustomer = context.Customers.Where(x => x.Id == id).FirstOrDefault();
+            return View(editCustomer);
+        }
+        [HttpPost]
+        [Authorize(Roles = "Employee")]
+        public ActionResult ConfirmPickUp(int id, Customer customer)
+        {
+            try
+            {
+                var editCustomer = context.Customers.Where(x => x.Id == id).FirstOrDefault();
+
+                editCustomer.PickupConfirmed = customer.PickupConfirmed;
+                editCustomer.Balance = customer.Balance;
+                context.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }
