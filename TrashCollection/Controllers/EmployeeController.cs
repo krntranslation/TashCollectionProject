@@ -115,8 +115,30 @@ namespace TrashCollection.Controllers
             return View(searchResults);
         }
 
-        
-    
+        //dont touch the work above
+
+        public ActionResult CustomerQuery(int id, Customer customer)
+        {
+            try
+            {
+                var X = context.Customers.Where(x => x.Id == id).FirstOrDefault();
+                //var filterZipCode = (customer.Zipcode = customer.Zipcode);
+                var selectedDay = (customer.PickUpDayOfTheWeek = customer.PickUpDayOfTheWeek);
+                var searchQuery = context.Customers.Where(c => c.Zipcode == customer.Zipcode && c.PickUpDayOfTheWeek == selectedDay);
+
+
+
+                return View(); //RedirectToAction("Index");
+
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
     }
 
 }
