@@ -101,8 +101,6 @@ namespace TrashCollection.Controllers
                 return View();
             }
         }
-        //Dont change anything above this
-        //Trying to employee user stories
        
         public ActionResult CustomerIndex()
         {
@@ -113,32 +111,11 @@ namespace TrashCollection.Controllers
         {
             var employeeId = User.Identity.GetUserId();
             var employee = context.Employees.Where(x => x.ApplicationId == employeeId).FirstOrDefault();
-            var searchResults = context.Customers.Where(c => c.Zipcode == employee.ZipCode);
+            var searchResults = context.Customers.Where(c => c.Zipcode == employee.ZipCode && c.PickUpDayOfTheWeek == DateTime.Today.DayOfWeek);
             return View(searchResults);
         }
 
-        //public ActionResult ConfirmPickUp(int id)
-        //{
-        //    var editCustomer = context.Customers.Where(x => x.Id == id).FirstOrDefault();
-        //    return View(editCustomer);
-        //}
-        //[HttpPost]
-        //public ActionResult ConfirmPickUp(int id, Customer customer)
-        //{
-        //    try
-        //    {
-        //        var editCustomer = context.Customers.Where(x => x.Id == id).FirstOrDefault();
-        //        editCustomer.PickupConfirmed = customer.PickupConfirmed;
-        //        editCustomer.Balance = customer.Balance;
-        //        context.SaveChanges();
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-
-        //    }
+        
     
     }
 
