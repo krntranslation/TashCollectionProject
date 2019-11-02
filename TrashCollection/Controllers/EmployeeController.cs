@@ -116,26 +116,54 @@ namespace TrashCollection.Controllers
         }
 
         //dont touch the work above
-
-        public ActionResult CustomerQuery(int id, Customer customer)
+        public ActionResult SaturdayWorkLoad()
         {
-            try
-            {
-                var X = context.Customers.Where(x => x.Id == id).FirstOrDefault();
-                //var filterZipCode = (customer.Zipcode = customer.Zipcode);
-                var selectedDay = (customer.PickUpDayOfTheWeek = customer.PickUpDayOfTheWeek);
-                var searchQuery = context.Customers.Where(c => c.Zipcode == customer.Zipcode && c.PickUpDayOfTheWeek == selectedDay);
-
-
-
-                return View(); //RedirectToAction("Index");
-
-
-            }
-            catch
-            {
-                return View();
-            }
+            var employeeId = User.Identity.GetUserId();
+            var employee = context.Employees.Where(x => x.ApplicationId == employeeId).FirstOrDefault();
+            var searchResults = context.Customers.Where(c => c.Zipcode == employee.ZipCode && c.PickUpDayOfTheWeek == DayOfWeek.Saturday);
+            return View(searchResults);
+        }
+        public ActionResult SundayWorkLoad()
+        {
+            var employeeId = User.Identity.GetUserId();
+            var employee = context.Employees.Where(x => x.ApplicationId == employeeId).FirstOrDefault();
+            var searchResults = context.Customers.Where(c => c.Zipcode == employee.ZipCode && c.PickUpDayOfTheWeek == DayOfWeek.Sunday);
+            return View(searchResults);
+        }
+        public ActionResult MondayWorkLoad()
+        {
+            var employeeId = User.Identity.GetUserId();
+            var employee = context.Employees.Where(x => x.ApplicationId == employeeId).FirstOrDefault();
+            var searchResults = context.Customers.Where(c => c.Zipcode == employee.ZipCode && c.PickUpDayOfTheWeek == DayOfWeek.Monday);
+            return View(searchResults);
+        }
+        public ActionResult TuesdayWorkLoad()
+        {
+            var employeeId = User.Identity.GetUserId();
+            var employee = context.Employees.Where(x => x.ApplicationId == employeeId).FirstOrDefault();
+            var searchResults = context.Customers.Where(c => c.Zipcode == employee.ZipCode && c.PickUpDayOfTheWeek == DayOfWeek.Tuesday);
+            return View(searchResults);
+        }
+        public ActionResult WednesdayWorkLoad()
+        {
+            var employeeId = User.Identity.GetUserId();
+            var employee = context.Employees.Where(x => x.ApplicationId == employeeId).FirstOrDefault();
+            var searchResults = context.Customers.Where(c => c.Zipcode == employee.ZipCode && c.PickUpDayOfTheWeek == DayOfWeek.Wednesday);
+            return View(searchResults);
+        }
+        public ActionResult ThursdayWorkLoad()
+        {
+            var employeeId = User.Identity.GetUserId();
+            var employee = context.Employees.Where(x => x.ApplicationId == employeeId).FirstOrDefault();
+            var searchResults = context.Customers.Where(c => c.Zipcode == employee.ZipCode && c.PickUpDayOfTheWeek == DayOfWeek.Thursday);
+            return View(searchResults);
+        }
+        public ActionResult FridayWorkLoad()
+        {
+            var employeeId = User.Identity.GetUserId();
+            var employee = context.Employees.Where(x => x.ApplicationId == employeeId).FirstOrDefault();
+            var searchResults = context.Customers.Where(c => c.Zipcode == employee.ZipCode && c.PickUpDayOfTheWeek == DayOfWeek.Friday);
+            return View(searchResults);
         }
 
 

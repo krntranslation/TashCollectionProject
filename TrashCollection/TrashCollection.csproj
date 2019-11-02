@@ -283,7 +283,13 @@
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Employee\Delete.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
-    <Content Include="Views\Employee\CustomerQuery.cshtml" />
+    <Content Include="Views\Employee\SaturdayWorkLoad.cshtml" />
+    <Content Include="Views\Employee\SundayWorkLoad.cshtml" />
+    <Content Include="Views\Employee\MondayWorkLoad.cshtml" />
+    <Content Include="Views\Employee\TuesdayWorkLoad.cshtml" />
+    <Content Include="Views\Employee\WednesdayWorkLoad.cshtml" />
+    <Content Include="Views\Employee\ThursdayWorkLoad.cshtml" />
+    <Content Include="Views\Employee\FridayWorkLoad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

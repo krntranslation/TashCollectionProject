@@ -1,11 +1,12 @@
 ﻿@model IEnumerable<TrashCollection.Models.Customer>
 
 @{
-    ViewBag.Title = "TodaysWorkLoad";
+    ViewBag.Title = "SundayWorkLoad";
 }
 
-<h2>Todays Work Load</h2>
+<h2>Sunday's Pick up's</h2>
 
+<h3>Select a day</h3>
 <p>
     @Html.ActionLink("Sunday", "SundayWorkLoad", "Employee")
     @Html.ActionLink("Monday", "MondayWorkLoad", "Employee")
@@ -14,6 +15,10 @@
     @Html.ActionLink("Thursday", "ThursdayWorkLoad", "Employee")
     @Html.ActionLink("Friday", "FridayWorkLoad", "Employee")
     @Html.ActionLink("Saturday", "SaturdayWorkLoad", "Employee")
+</p>
+<h4>See Todays Work Load</h4>
+<p>
+    @Html.ActionLink("Today's Work Load", "TodaysWorkLoad", "Employee")
 </p>
 <table class="table">
     <tr>
@@ -35,34 +40,37 @@
         <th>
             @Html.DisplayNameFor(model => model.Zipcode)
         </th>
-
+        <th>
+            @Html.DisplayNameFor(model => model.PickUpDayOfTheWeek)
+        </th>
+        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StreetAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StateCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Zipcode)
-        </td>
-
-        <td>
-            @Html.ActionLink("Index", "Index", "Customer")
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zipcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickUpDayOfTheWeek)
+            </td>
+        </tr>
+    }
 
 </table>
