@@ -17,7 +17,7 @@ namespace TrashCollection.Controllers
         {
             context = new ApplicationDbContext();
         }
-
+        [Authorize(Roles = "Employee")]
         public ActionResult Index()
         {
             var customerList = context.Customers.ToList();
