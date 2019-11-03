@@ -82,7 +82,6 @@ namespace TrashCollection.Controllers
                 editCustomer.StartDate = customer.StartDate;
                 editCustomer.EndDate = customer.EndDate;
                 editCustomer.PickUpDayOfTheWeek = customer.PickUpDayOfTheWeek;
-             
                 editCustomer.PickupConfirmed = customer.PickupConfirmed;
                 editCustomer.Balance = customer.Balance;
             

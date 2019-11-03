@@ -117,7 +117,7 @@ namespace TrashCollection.Controllers
 
         //dont touch the work above
         public ActionResult SaturdayWorkLoad()
-        {
+        { 
             var employeeId = User.Identity.GetUserId();
             var employee = context.Employees.Where(x => x.ApplicationId == employeeId).FirstOrDefault();
             var searchResults = context.Customers.Where(c => c.Zipcode == employee.ZipCode && c.PickUpDayOfTheWeek == DayOfWeek.Saturday);
